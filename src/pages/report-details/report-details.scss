@@ -1,0 +1,32 @@
+page-report-details {
+    #title-content{
+        padding: 5px 0px 0px 16px;
+    }
+    .border-line{
+        margin: 0px 16px 0px 16px;
+        border-bottom: 2px solid black;
+    }
+    #content{
+        margin: auto 10px;
+    }
+    .user-posts-content{
+        padding: 0px 0px 0px 16px;
+        margin: 15px 0px 20px 0px;
+    }
+    #content{
+        margin: 0px;
+    }
+    .user-details{
+        display: inline-block;
+        border-right: 2px solid black;
+        padding-right: 5px;
+        margin-right: 5px;
+    }
+    #content-post-message{
+        padding: 16px 16px 0px 16px;
+    }
+    #image-details{
+        height: 250px;
+        overflow: scroll;
+    }
+}

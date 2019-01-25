@@ -1,0 +1,83 @@
+<!--
+  Generated template for the TabRtaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="navbar">
+    <ion-title>Timeline</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu">
+        <ion-badge id="notifications-badge" color="danger" *ngIf="identifier == 'government' && notif == '1'">!</ion-badge>
+      </ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="generatePost()">
+        <ion-icon ios="ios-create" md="md-create"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div *ngIf="length < 1 " class="login-content">
+    <div padding-horizontal text-center class="animated fadeInDown">
+      <img margin width="200" height="200" src="../../assets/imgs/blank.png">
+        <h2 ion-text class="text-primary">Still Empty. No Report Submitted and Verified</h2>
+    </div>
+  </div>
+
+  <ion-list #virtualScroll [virtualScroll]="posts" approxItemHeight="200px" approxItemWidth="100%">
+    <div *virtualItem="let post" style="width: 100%">
+    
+      <ion-card class="virtual-div">
+        <ion-item-sliding #item>
+          <ion-item>
+            <ion-avatar class="virtual-div">
+              <img src="../../assets/custom/government.png" *ngIf="post.gov_official">
+              <img src="../../assets/custom/citizen.png" *ngIf="!post.gov_official">
+            </ion-avatar>
+            <div class="virtual-div">
+            <h2 class="div-date">{{ post.name }} </h2>
+            <p class="div-date">{{ post.date_posted }}</p>
+            </div>
+            <ion-card-content>
+              <ion-card-title>
+                {{post.title}}
+              </ion-card-title>
+              <p>
+                {{post.content}}
+              </p>
+            </ion-card-content>
+          </ion-item>
+                  <!-- <ion-item-options side="left">
+                    <button ion-button (click)="favorite(item)">Edit</button>
+                    <button ion-button color="danger" (click)="share(item)">Delete</button>
+                  </ion-item-options>
+                  
+                  <ion-item-options side="right">
+                    <button ion-button (click)="unread(item)">Read Post</button>
+                  </ion-item-options> -->
+                  </ion-item-sliding>
+                      <ion-row class="cardfooter">
+                        <ion-col col-lg-4 col-md-4 col-sm-4 col-xs-4>
+                          <button *ngIf="identifier == 'government'" icon-start class="footer-button" ion-button full color="dark" (click)="updatepost(post)">
+                            <ion-icon ios="ios-briefcase" md="md-briefcase"></ion-icon>Re-write</button>
+                        </ion-col>
+                        <ion-col col-lg-4 col-md-4 col-sm-4 col-xs-4>
+                          <button *ngIf="identifier == 'government'" icon-start class="footer-button" ion-button full color="danger" (click)="dropPost(post.postId,post.userid,post.postedIn,post.gov_official)">
+                            <ion-icon ios="ios-trash" md="md-trash"></ion-icon>Drop</button>
+                        </ion-col>
+                        <ion-col col-lg-4 col-md-4 col-sm-4 col-xs-4>
+                          <button class="footer-button" icon-start ion-button full color="read" (click)="readpost(post.name,post.date_posted,post.imagepost_url,post.title,post.content,post.lattitude,post.longitude)">
+                            <ion-icon ios="ios-glasses" md="md-glasses"></ion-icon>Read</button>
+                        </ion-col>
+                      </ion-row>
+      </ion-card>
+    </div>
+  </ion-list>
+</ion-content>

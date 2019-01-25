@@ -1,0 +1,104 @@
+<!--
+  Generated template for the RenderOwnPostPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="navbar">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Read Your Own Posts</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list *ngIf="ownPosts.length > 0;else noPosts" #virtualScroll [virtualScroll]="ownPosts" approxItemHeight="200px" approxItemWidth="100%">
+    <div *virtualItem="let post" style="width: 100%">
+      <ion-card class="virtual-div">
+        <ion-grid *ngIf="!post.gov_official">
+          <ion-row>
+            <ion-col col-lg-3 col-md-3 col-sm-3 col-xs-3>
+              <ion-item *ngIf="post.rta">
+                <ion-icon color="danger" ios="ios-megaphone" md="md-megaphone"></ion-icon>&nbsp;RTA
+              </ion-item>
+              <ion-item *ngIf="!post.rta">
+                <ion-icon ios="ios-megaphone" md="md-megaphone"></ion-icon>&nbsp;RTA
+              </ion-item>
+            </ion-col>
+            <ion-col col-lg-3 col-md-3 col-sm-3 col-xs-3>
+              <ion-item *ngIf="post.pnp">
+                <ion-icon color="danger" ios="ios-hand" md="md-hand"></ion-icon>&nbsp;PNP
+              </ion-item>
+              <ion-item *ngIf="!post.pnp">
+                <ion-icon ios="ios-hand" md="md-hand"></ion-icon>&nbsp;PNP
+              </ion-item>
+            </ion-col>
+            <ion-col col-lg-3 col-md-3 col-sm-3 col-xs-3 text-wrap>
+              <ion-item *ngIf="post.ndrmmc">
+                <ion-icon color="danger" ios="ios-rainy" md="md-rainy"></ion-icon>&nbsp;CDRMMD
+              </ion-item>
+              <ion-item *ngIf="!post.ndrmmc">
+                <ion-icon ios="ios-rainy" md="md-rainy"></ion-icon>&nbsp;CDRMMD
+              </ion-item>
+            </ion-col>
+            <ion-col col-lg-3 col-md-3 col-sm-3 col-xs-3>
+              <ion-item *ngIf="post.bfp">
+                <ion-icon color="danger" ios="ios-flame" md="md-flame"></ion-icon>&nbsp;BFP
+              </ion-item>
+              <ion-item *ngIf="!post.bfp">
+                <ion-icon ios="ios-flame" md="md-flame"></ion-icon>&nbsp;BFP
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-item-sliding #item>
+          <ion-item>
+            <ion-avatar class="virtual-div">
+              <img src="../../assets/custom/government.png" *ngIf="post.gov_official">
+              <img src="../../assets/custom/citizen.png" *ngIf="!post.gov_official || post.gov_official == null || post.gov_official == ''">
+            </ion-avatar>
+            <div class="virtual-div">
+              <h2 class="div-date">{{ post.name }} </h2>
+              <p class="div-date">{{ post.date_posted }}</p>
+            </div>
+            <ion-card-content>
+              <ion-card-title>
+                {{post.title}}
+              </ion-card-title>
+              <p>
+                {{post.content}}
+              </p>
+            </ion-card-content>
+          </ion-item>
+          <ion-item-options side="left">
+            <button ion-button (click)="favorite(item)">Edit</button>
+            <button ion-button color="danger" (click)="share(item)">Delete</button>
+          </ion-item-options>
+  
+          <ion-item-options side="right">
+            <button ion-button (click)="unread(item)">Read Post</button>
+          </ion-item-options>
+        </ion-item-sliding>
+        <ion-row class="cardfooter">
+          <ion-col col-lg-4 col-md-4 col-sm-4 col-xs-4>
+            <button class="footer-button" [disabled]="identifier == 'citizen'" ion-button full color="dark">Re-write</button>
+          </ion-col>
+          <ion-col col-lg-4 col-md-4 col-sm-4 col-xs-4>
+            <button class="footer-button" [disabled]="identifier == 'citizen'" ion-button full color="dark" (click)="removePosts(post.postId,post.userid,post.postedIn,post.gov_official)">Drop</button>
+          </ion-col>
+          <ion-col col-lg-4 col-md-4 col-sm-4 col-xs-4>
+            <button class="footer-button" ion-button full color="dark" (click)="readpost(post.name,post.date_posted,post.imagepost_url,post.title,post.content,post.lattitude,post.longitude)">Read</button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </div>
+  </ion-list>
+  <ng-template #noPosts>
+    <h1>NO POSTS YET</h1>
+  </ng-template>
+</ion-content>

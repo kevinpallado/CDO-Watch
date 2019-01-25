@@ -1,0 +1,40 @@
+<!--
+  Generated template for the ReportDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="navbar">
+    <ion-title>Report Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div id="content" *ngFor="let content of contentPost">
+    <div id="title-content">
+      <h1>{{content.title}}</h1>
+    </div>
+    <div class="border-line"></div>
+    <div class="user-posts-content">
+      <div class="user-details"><strong>{{content.name}}</strong></div>
+      <div class="user-details">{{content.date}}</div>
+    </div>
+    <div id="image-details">
+      <div style="position: relative">
+        <ion-fab right top class="fab-map">
+          <button (click)="showLocation(content.latitude,content.longitude,content.title)" ion-fab>
+            <ion-icon name="pin"></ion-icon>
+          </button>
+        </ion-fab>
+      </div>
+      <img src="{{content.image}}" alt="report-photo">
+    </div>
+    <div id="content-post-message">
+      {{content.content}}
+    </div>
+  </div>
+</ion-content>

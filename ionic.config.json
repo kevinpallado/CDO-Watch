@@ -1,0 +1,8 @@
+{
+  "name": "cdo-watch-mastered",
+  "app_id": "1ebcb7ab",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

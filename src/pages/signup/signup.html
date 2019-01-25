@@ -1,0 +1,76 @@
+<!-- -->
+<ion-content class="auth-page">
+  <div class="login-content">
+
+    <!-- Logo -->
+    <div padding text-center>
+      <div class="logo"></div>
+      <h2 ion-text class="text-primary">
+        <strong>Register</strong> New Account
+      </h2>
+    </div>
+
+    <!-- Login form -->
+    <form [formGroup]="registerForm" class="list-form">
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="person" item-start class="text-primary"></ion-icon>
+          National ID Number
+        </ion-label>
+        <ion-input formControlName="idnumber" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="person" item-start class="text-primary"></ion-icon>
+          Full Name
+        </ion-label>
+        <ion-input formControlName="fullname" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="mail" item-start class="text-primary"></ion-icon>
+          Email
+        </ion-label>
+        <ion-input formControlName="email" type="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+          Password
+        </ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+          Re-type Password
+        </ion-label>
+        <ion-input formControlName="repassword" type="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="mail" item-start class="text-primary"></ion-icon>
+            Phone Number
+          </ion-label>
+        <ion-input formControlName="phonenumber" type="number"></ion-input>
+      </ion-item>
+    </form>
+
+    <div margin-top>
+      <button ion-button block color="dark" [disabled]="!registerForm.valid" tappable (click)="register()">
+        SIGN UP
+      </button>
+    </div>
+
+    <!-- Other links -->
+    <div text-center margin-top>
+      <span ion-text color="primary" tappable (click)="login()">I have an account</span>
+    </div>
+
+  </div>
+</ion-content>

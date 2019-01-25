@@ -1,0 +1,51 @@
+<!-- -->
+<ion-content padding class="animated fadeIn login auth-page">
+  <div class="login-content">
+
+    <!-- Logo -->
+    <div padding-horizontal text-center class="animated fadeInDown">
+      <div class="logo"></div>
+      <!-- <h2 ion-text class="text-primary">
+        <strong>CDO</strong> Watch
+      </h2> -->
+    </div>
+
+    <!-- Login form -->
+    <form [formGroup]="loginForm" class="list-form">
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="mail" item-start class="text-primary"></ion-icon>
+          Email
+        </ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <div class="error-text" *ngIf="errorCodeIdentifier && errorCodeIdentifier === 'auth/user-not-found'">User not found. Please register</div>
+      <div class="error-text" *ngIf="errorCodeIdentifier && errorCodeIdentifier === 'auth/invalid-email'">Invalid email format</div>
+      <div class="error-text" *ngIf="errorCodeIdentifier && errorCodeIdentifier === 'auth/wrong-password'">Email or Password is not correct</div>
+      <div class="error-text" *ngIf="errorCodeIdentifier && errorCodeIdentifier === 'not-verified'">Please verify email address</div>
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+          Password
+        </ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+    </form>
+
+    <div>
+      <button ion-button icon-start block color="dark" (click)="login()">
+        <ion-icon name="log-in"></ion-icon>
+        SIGN IN
+      </button>
+    </div>
+
+
+    <!-- Other links -->
+    <div class="signup-div" text-center>
+      <span ion-text color="secondary" tappable (click)="register()">New here?
+        <strong>Sign up</strong>
+      </span>
+    </div>
+
+  </div>
+</ion-content>

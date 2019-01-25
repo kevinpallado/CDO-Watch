@@ -1,0 +1,27 @@
+page-crud-add-post {
+    #image-div-holder{
+        max-height: 350px;
+        overflow: scroll;
+        background-color: #702362;
+        border-left: 20px solid #275dad;
+    }
+    .icon-image-posts{
+        width: 50%;
+    }
+    ion-label{
+        display: inherit;
+    }
+    .item-md p{
+        padding: 3%;
+    }
+    textarea.text-input.text-input-md {
+    height: 200px;
+    }
+    .report-inputs{
+        border: 5px solid black;
+        margin-top: 20px;
+    }
+    .generated{
+        width: 100%;
+    }
+}

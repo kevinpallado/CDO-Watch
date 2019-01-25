@@ -1,0 +1,11 @@
+page-signup {
+    .scroll-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    ion-content > div {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+}
